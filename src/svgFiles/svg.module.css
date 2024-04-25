@@ -1,0 +1,37 @@
+svg{
+    transition: color 0.3s ease; /* Smooth color transition */
+
+}
+svg:hover {
+    stroke:#c73817;
+    cursor: pointer; /* Change cursor on hover */
+  }
+  path:hover {
+    fill: #c73817;
+    cursor: pointer; /* Change cursor on hover */
+  }
+
+@media screen and (max-width:1200px) {
+    path{
+        fill:#fff;
+        transition: color 0.3s ease; /* Smooth color transition */
+       
+    }
+    path:hover {
+        fill: #c73817; /* Change color on hover */
+        cursor: pointer; /* Change cursor on hover */
+      }
+}
+  
+@media screen and (max-width:750px) {
+    path{
+        fill:#fff;
+        transition: color 0.3s ease; /* Smooth color transition */
+     
+    }
+    path:hover {
+        fill: #c73817; /* Change color on hover */
+        cursor: pointer; /* Change cursor on hover */
+      }
+}
+  

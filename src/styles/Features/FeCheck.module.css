@@ -1,0 +1,106 @@
+.checkWrapper {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.checkMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 100px;
+    overflow-y: hidden;
+
+}
+
+.checkHeading {
+    color: #FFF;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.checkSubHeading {
+    color: #FFF;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.checkCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 180px;
+    row-gap: 100px;
+  }
+  
+  .eachCard {
+    width: 200px;
+    height: 230px;
+    perspective: 1000px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  
+  .cardFront, .cardBack {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 20px;
+    backface-visibility: hidden;
+  }
+  
+  .cardFront {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(50deg, #00F0FF 4.01%, #5200FF 57.55%, #FF2DF7 114.97%);
+    cursor: pointer;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  .cardImg {
+    width:50px;
+    height:100px;
+    object-fit: contain;
+  }
+
+  .cardHeading {
+    color: #FFF;
+    font-family: Arial;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  .cardBack { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(50deg, #00F0FF 4.01%, #5200FF 57.55%, #FF2DF7 114.97%);
+  transform: rotateY(180deg);
+  /* box-shadow: 200px 4px 8px 100px rgba(#00F0FF, 1); */
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  }
+
+  .cardText {
+    color: #FFF;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    padding:10px 20px;
+  }
+  
+  .eachCard:hover .cardFront {
+    transform: rotateY(180deg);
+  }
+
+  
+  .eachCard:hover .cardBack {
+    transform: rotateY(0deg);
+  }
+  

@@ -1,0 +1,41 @@
+.brandWrapper{
+  background-color: black;
+  padding: 50px 100px 100px;
+
+}
+.brandMain{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 50px;
+  height: 100%;
+  width:100%;
+}
+
+.brandList{
+  display: flex;
+  flex-direction: row;
+  column-gap: 40px;
+  overflow: hidden;
+
+}
+
+.brandListItem{
+  max-height:100%;
+  max-width:100%;  
+  display: flex;
+  flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+  column-gap: 10px;
+}
+.brandListItemImg {
+  height: 40px;
+  width:100px;
+  overflow:hidden;
+  background-repeat: no-repeat;
+  background-size: contain;
+}

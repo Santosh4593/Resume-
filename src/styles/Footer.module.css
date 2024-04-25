@@ -1,0 +1,144 @@
+.footerWrapper{
+    background-color: #000;
+    overflow: hidden;
+}
+.footerMain {
+    display: flex;
+    flex-direction: column;
+    margin: 50px 100px 25px;
+    overflow: hidden;
+    
+}
+.footerTop {
+    display: flex;
+    flex-direction: row;
+    column-gap: 250px;
+    width: 100%;
+}
+.footerTopLeft{
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    max-width: 40%;
+}
+.topLeftMainHead {
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+    align-items: center;  
+    color: #E0ECF6;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+}
+.topLeftMainContent{
+    color: #FFF;
+    text-align: justify;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+
+}
+.footerTopRight{
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    column-gap: 80px;
+}
+
+.topRightList {
+    display: flex;
+    flex-direction: column;
+    row-gap: 55px;
+}
+.topRightListHeading {
+    color: #FFF;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+}
+
+.topRightListMain{
+    display: flex;
+    flex-direction: column;
+    row-gap: 18px;
+    font-size: 18px;
+    
+}
+
+li {
+
+}
+.listItem{
+    list-style: none;
+    text-decoration: none;
+}
+
+.footerBottom {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+}
+.footerBottomHandles {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: 30px;
+}
+.footerLinkedIn{
+
+}
+.footerTwitter {
+
+}
+.footerYouTube {
+
+}
+
+.footerBottomLine {
+    width:100%;
+    height: 1px; 
+    color: transparent;
+    background: rgba(57, 74, 241, 1);
+    background: linear-gradient(
+    45deg,
+    rgb(226, 127, 253) 0%,
+    rgba(126, 45, 244, 1) 21%,
+    rgba(57, 74, 241, 1) 28%,
+    rgba(75, 216, 237, 1) 35%,
+     rgba(57, 74, 241, 1) 63%,
+    rgba(126, 45, 244, 1) 70%,
+    rgba(162, 84, 247, 1) 77%,
+    rgb(219, 127, 253) 97%,
+    rgb(204, 0, 255) 100%
+  );
+  background-size: 50%;
+  animation: color 10s linear infinite; 
+}
+
+@keyframes color {
+    from {
+      background-position: 0% 50%;
+    }
+    to {
+      background-position: 100% 50%;
+    }
+  
+}
+
+.footerBottomCopyright{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.footerRights{
+
+}
+.footerPolicy {
+
+}

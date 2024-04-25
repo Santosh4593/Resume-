@@ -1,0 +1,40 @@
+.evaluateWrapper {
+    background-color: black;
+}
+
+.evaluateMain {
+    padding: 50px 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.evaluateContain {
+    display: flex;
+    flex-direction: column;
+    background-color: #B9EFFF;
+    clip-path: polygon(0% 0%, 95% 0%, 100% 100%, 5% 100%);
+    align-items: center;
+    justify-content: center;
+    row-gap: 50px;
+    padding:50px 0px;
+}
+
+.evaluateHeading {
+    color: #000;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.evaluateLink {  
+   text-decoration: none;
+   display: flex;
+   padding: 11px 32px;
+   width: fit-content;
+   justify-content: center;
+   align-items: center;
+   border-radius: 8px;
+   background: #08358E;
+   color: rgba(255, 255, 255, 0.75);
+   font-size: 18px;
+   font-weight: 700;
+}

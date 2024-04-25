@@ -1,0 +1,150 @@
+.quoteWrapper {
+    background-color: black;
+}
+.quoteMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 100px 100px;
+}
+.quoteContainer {
+    border-radius: 18px;
+    background: rgba(124, 124, 124, 0.29);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width:80%;
+}
+.quoteCarousel { 
+    position: relative;
+    bottom:30px;
+}
+
+  .slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    border-radius: 20px;
+    background: #D9D9D9;
+    width:250px;
+    height: 370px;
+  }
+  
+  .slideActive {
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 2px;
+  }
+
+  .slide{
+    display: none;
+  }
+
+  .slideImg {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    bottom:340px;
+    left:70px; 
+    border: 4px white solid;
+  }
+  
+  .slideContent {
+    color: #62686A;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 0px 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  .slideName {
+    color: #000;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 0px 20px;
+  }
+
+  .slidePost {
+    color: #000;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 0px 20px;
+    margin-bottom: 20px;
+  }
+
+  .slideLine {
+    height:2px;
+    margin: 0px 10px;
+    width:90%;
+    background-color: #000;
+    margin-bottom: 20px;
+  }
+
+  .slideUdemy {
+    color: #000;
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: center;
+  }
+  
+  .carouselIndicator {
+    padding-top: 15px;
+    transform: translateX(38%);
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .indicator {
+    width: 10px;
+    height: 10px;
+    background-color: #888;
+    border-radius: 50%;
+    margin: 0 3px;
+    cursor: pointer;
+  }
+  
+  .indicatorActive {
+    background-color: #eaeaea;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 3px;
+    cursor: pointer;
+  }
+  
+.quoteText {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    width:55%;
+}
+.quoteHeading {
+    font-size: 41px;
+    font-weight: 700;
+
+}
+.quoteButton {
+    text-decoration: none;
+    display: flex;
+    padding: 8px 30px;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background: #08358E;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 20px;
+    font-weight: 700;
+
+}
+.quoteReview {
+    width:180px;
+}

@@ -1,0 +1,1365 @@
+import React, {useState} from 'react';
+import styles from '../styles/Product.module.css';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { useDropzone } from 'react-dropzone';
+
+export default function Product() {
+
+  const [activeTab, setActiveTab] = useState('option1');
+  const [feedbackOption, setFeedbackOption] = useState('');
+  const initialValues = {
+    jobDescription: '',
+    resume: null,
+  };
+
+  const validationSchema = Yup.object().shape({
+    jobDescription: Yup.string().required('Job description is required'),
+    resume: Yup.mixed().required('Resume is required').test(
+      'fileFormat',
+      'Only PDF files are allowed',
+      (value) => value && value.type === 'application/pdf'
+    ),
+  });
+
+  
+  const handleFeedbackOptionChange = (option) => {
+    setFeedbackOption(option);
+    // Implement logic here based on the selected option
+    // For example, call an API to analyze the resume and provide feedback
+  };
+
+  const handleSubmit = (values) => {
+    // Submit the form data to the server or handle it locally
+    console.log('Submitted values:', values);
+  };
+
+
+  return (
+    <div className={styles.productWrapper}>
+        <div className={styles.productMain}>    
+            <div className={styles.productLeft}>
+                <div className={styles.LeftTabMenu}>
+                    <button onClick={() => setActiveTab('option1')} className={activeTab === 'option1' ? styles.active : ''}>1. Add Resume</button>
+                    <button onClick={() => setActiveTab('option2')} className={activeTab === 'option2' ? styles.active : ''}>2. Save Resume</button>
+                    <button onClick={() => setActiveTab('option3')} className={activeTab === 'option3' ? styles.active : ''}>3. Create Resume</button>
+                </div>
+                <div className={styles.LeftTabContent}>
+                    {activeTab === 'option1' && (
+                        <div>
+                            <div></div>
+                            <div>
+                            <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ isSubmitting, setFieldValue }) => (
+          <Form>
+            <div>
+              <label htmlFor="jobDescription">Job Description:</label>
+              <Field
+                as="textarea"
+                id="jobDescription"
+                name="jobDescription"
+                rows={4}
+                cols={50}
+              />
+              <ErrorMessage name="jobDescription" component="div" className="error" />
+            </div>
+            <div>
+              <label>Upload Resume (PDF only):</label>
+              <Dropzone setFieldValue={setFieldValue} />
+              <ErrorMessage name="resume" component="div" className="error" />
+            </div>
+            <div>
+              <h3>Select Feedback Option:</h3>
+              <button onClick={() => handleFeedbackOptionChange('Improve')}>Improve Resume</button>
+              <button onClick={() => handleFeedbackOptionChange('Review')}>Review Resume</button>
+              <button onClick={() => handleFeedbackOptionChange('Score')}>Score Resume</button>
+            </div>
+            <button type="submit" disabled={isSubmitting}>
+              Submit
+            </button>
+          </Form>
+        )}
+      </Formik>
+                            </div>
+                            <div></div>
+                        </div>
+                    )}
+
+                    {activeTab === 'option2' && (
+                        <div>Save Resume</div>
+                    )}
+
+                    {activeTab === 'option3' && (
+                        <div>Create Resume</div>
+                    )}
+                </div>
+            </div>
+            <div className={styles.productRight}></div>
+        </div>  
+    </div>
+  )
+};
+
+const Dropzone = ({ setFieldValue }) => {
+    const onDrop = (acceptedFiles) => {
+      setFieldValue('resume', acceptedFiles[0]);
+    };
+  
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  
+    return (
+      <div {...getRootProps()} className={`dropzone ${isDragActive ? 'active' : ''}`}>
+        <input {...getInputProps()} />
+        <p>Drag &apos;n&apos; drop PDF files here, or click to select files</p>
+      </div>
+    );
+  };
+  
+// import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import Airtel from '../../images/airtel.png';
+import UBA from '../../images/UBA.png';
+import Paga from '../../images/paga.png';
+import MTN from '../../images/MTN.png';
+import Dangote from '../../images/dangote.png';
+import Firstbank from '../../images/firstbank.png';
+import Cloud from '../../images/cloud.png';
+import Ebay from '../../images/ebay.png';
+import Tux from '../../images/tux.png';
+import Spotify from '../../images/spotify.png';
+import Airbnb from '../../images/airbnb.png';
+import Facebook from '../../images/facebook.png';
+import Cocacola from '../../images/cocacola.png';
+import Zoom from '../../images/zoom.png';
+import Creativecloud from '../../images/creativecloud.png';
+import Netflix from '../../images/netflix.png';
+import Discord from '../../images/discord.png';
+import Figma from '../../images/figma.png';
+import Paypal from '../../images/paypal.png';
+import Adobe from '../../images/adobe.png';
+import styles from '../../styles/Home/Brand.module.css';
+
+export default function Brand() {
+
+    const data = [
+        { rowOne: [Airtel, UBA, Paga, MTN, Dangote, Firstbank] },
+        {rowTwo: [Cloud, Ebay, Tux, Spotify, Airbnb, Facebook, Cocacola] },
+        {rowThree: [Zoom, Creativecloud, Netflix, Discord, Figma, Paypal, Adobe] }
+    ]
+  return (
+    <div className={styles.brandWrapper}>
+        <div className={styles.brandMain}>
+            {data.map((item, index)=> (
+                <ul 
+                className={styles.brandList}
+                
+                key={index}>
+                    {Object.values(item)[0].map((image, imageIndex)=> (
+                        <li className={styles.brandListItem}>
+                            <div className={styles.brandListItemImg}
+                            style={{ backgroundImage: `url(${image})`}}></div>
+                        </li>
+                    ))}
+                </ul>
+            ))}
+        </div>
+    </div>
+  )
+}
+
+// import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Airtel from '../../images/airtel.png';
+import UBA from '../../images/UBA.png';
+import Paga from '../../images/paga.png';
+import MTN from '../../images/MTN.png';
+import Dangote from '../../images/dangote.png';
+import Firstbank from '../../images/firstbank.png';
+import Cloud from '../../images/cloud.png';
+import Ebay from '../../images/ebay.png';
+import Tux from '../../images/tux.png';
+import Spotify from '../../images/spotify.png';
+import Airbnb from '../../images/airbnb.png';
+import Facebook from '../../images/facebook.png';
+import Cocacola from '../../images/cocacola.png';
+import Zoom from '../../images/zoom.png';
+import Creativecloud from '../../images/creativecloud.png';
+import Netflix from '../../images/netflix.png';
+import Discord from '../../images/discord.png';
+import Figma from '../../images/figma.png';
+import Paypal from '../../images/paypal.png';
+import Adobe from '../../images/adobe.png';
+import styles from '../../styles/Home/Brand.module.css';
+
+export default function Brand() {
+
+    const settings = {
+        dots: false,
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        speed: 2000,
+        autoplaySpeed: 2000,
+        cssEase: "linear"
+      };
+    
+  return (
+    <div className={styles.brandWrapper}>
+      <div className={styles.brandMain}>
+      <Slider {...settings} className={styles.brandList}>
+          <div className={styles.brandListItem}>
+            <img src={Airtel} className={styles.brandListItemImg} />
+          </div>
+          <div className={styles.brandListItem}>
+            <img src={UBA} className={styles.brandListItemImg} />
+          </div>
+          <div className={styles.brandListItem}>
+            <img src={Paga} className={styles.brandListItemImg} />
+          </div>
+          <div className={styles.brandListItem}>
+            <img src={MTN} className={styles.brandListItemImg} />
+          </div>
+          <div className={styles.brandListItem}>
+            <img src={Dangote} className={styles.brandListItemImg} />
+          </div>
+          <div className={styles.brandListItem}>
+            <img src={Firstbank} className={styles.brandListItemImg} />
+          </div>
+      </Slider>
+
+      
+      <Slider {...settings} className={styles.brandList}>
+          <div className={styles.brandListItem}>
+            <img src={Cloud} className={styles.brandListItemImg} />
+          </div>
+          <div className={styles.brandListItem}>
+            <img src={Ebay} className={styles.brandListItemImg} />
+          </div>
+          <div className={styles.brandListItem}>
+            <img src={Tux} className={styles.brandListItemImg} />
+          </div>
+          <div className={styles.brandListItem}>
+            <img src={Spotify} className={styles.brandListItemImg} />
+          </div>
+          <div className={styles.brandListItem}>
+            <img src={Airbnb} className={styles.brandListItemImg} />
+          </div>
+          <div className={styles.brandListItem}>
+            <img src={Facebook} className={styles.brandListItemImg} />
+          </div>
+          <div className={styles.brandListItem}>
+            <img src={Cocacola} className={styles.brandListItemImg} />
+          </div>
+      </Slider>
+
+      
+      <Slider {...settings} className={styles.brandList}>
+          <div className={styles.brandListItem}>
+            <img src={Zoom} className={styles.brandListItemImg} />
+          </div>
+          <div className={styles.brandListItem}>
+            <img src={Creativecloud} className={styles.brandListItemImg} />
+          </div>
+          <div className={styles.brandListItem}>
+            <img src={Netflix} className={styles.brandListItemImg} />
+          </div>
+          <div className={styles.brandListItem}>
+            <img src={Discord} className={styles.brandListItemImg} />
+          </div>
+          <div className={styles.brandListItem}>
+            <img src={Figma} className={styles.brandListItemImg} />
+          </div>
+          <div className={styles.brandListItem}>
+            <img src={Paypal} className={styles.brandListItemImg} />
+          </div>
+          <div className={styles.brandListItem}>
+            <img src={Adobe} className={styles.brandListItemImg} />
+          </div>
+      </Slider>
+      </div>
+    </div>
+  )
+}
+
+import React from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import styles from '../../styles/Home/Brand.module.css';
+
+// Define your image imports
+import Airtel from '../../images/airtel.png';
+import UBA from '../../images/UBA.png';
+import Paga from '../../images/paga.png';
+import MTN from '../../images/MTN.png';
+import Dangote from '../../images/dangote.png';
+import Firstbank from '../../images/firstbank.png';
+import Cloud from '../../images/cloud.png';
+import Ebay from '../../images/ebay.png';
+import Tux from '../../images/tux.png';
+import Spotify from '../../images/spotify.png';
+import Airbnb from '../../images/airbnb.png';
+import Facebook from '../../images/facebook.png';
+import Cocacola from '../../images/cocacola.png';
+import Zoom from '../../images/zoom.png';
+import Creativecloud from '../../images/creativecloud.png';
+import Netflix from '../../images/netflix.png';
+import Discord from '../../images/discord.png';
+import Figma from '../../images/figma.png';
+import Paypal from '../../images/paypal.png';
+import Adobe from '../../images/adobe.png';
+
+export default function Brand() {
+    const settings = {
+        dots: false,
+        infinite: true,
+        slidesToShow: 5,
+        slidesToScroll: 5,
+        autoplay: true,
+        autoplaySpeed: 5000, // Increase autoplaySpeed
+        speed: 1500, // Increase speed
+      };
+  const rows = [
+    [Airtel, UBA, Paga, MTN, Dangote, Firstbank],
+    [Cloud, Ebay, Tux, Spotify, Airbnb, Facebook, Cocacola],
+    [Zoom, Creativecloud, Netflix, Discord, Figma, Paypal, Adobe],
+  ];
+
+  return (
+    <div className={styles.brandWrapper}>
+      <div className={styles.brandMain}>
+        {rows.map((images, index) => (
+          <Slider {...settings} key={index} className={styles.brandList}>
+            {images.map((image, imgIndex) => (
+              <div className={styles.brandListItem} key={imgIndex}>
+                <img src={image} className={styles.brandListItemImg} alt={`logo-${index}-${imgIndex}`} />
+              </div>
+            ))}
+          </Slider>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+/* .brandWrapper{
+    background-color: #000;
+    padding: 100px 0px;
+}
+.brandMain{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.brandList {
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+  
+.brandListItem {
+  margin: 0 10px; 
+}
+.brandListItemImg {  
+  max-width: 30px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+} */
+
+import React, { useState, useEffect } from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import styles from '../../styles/Home/Brand.module.css';
+
+// Define your image imports
+import Airtel from '../../images/airtel.png';
+import UBA from '../../images/UBA.png';
+import Paga from '../../images/paga.png';
+import MTN from '../../images/MTN.png';
+import Dangote from '../../images/dangote.png';
+import Firstbank from '../../images/firstbank.png';
+import Cloud from '../../images/cloud.png';
+import Ebay from '../../images/ebay.png';
+import Tux from '../../images/tux.png';
+import Spotify from '../../images/spotify.png';
+import Airbnb from '../../images/airbnb.png';
+import Facebook from '../../images/facebook.png';
+import Cocacola from '../../images/cocacola.png';
+import Zoom from '../../images/zoom.png';
+import Creativecloud from '../../images/creativecloud.png';
+import Netflix from '../../images/netflix.png';
+import Discord from '../../images/discord.png';
+import Figma from '../../images/figma.png';
+import Paypal from '../../images/paypal.png';
+import Adobe from '../../images/adobe.png';
+
+export default function Brand() {
+  const logos = [
+    [Airtel, UBA, Paga, MTN, Dangote, Firstbank],
+    [Cloud, Ebay, Tux, Spotify, Airbnb, Facebook, Cocacola],
+    [Zoom, Creativecloud, Netflix, Discord, Figma, Paypal, Adobe],
+  ];
+
+  const [positions, setPositions] = useState([]);
+
+  useEffect(() => {
+    const initialPositions = logos.map(() => 0);
+    setPositions(initialPositions);
+
+    const sliderInterval = setInterval(() => {
+      setPositions(prevPositions =>
+        prevPositions.map((prevPosition, rowIndex) => {
+          const rowLength = logos[rowIndex].length;
+          const newPosition = prevPosition - 1;
+          return newPosition <= -100 * rowLength ? 0 : newPosition;
+        })
+      );
+    }, 50);
+
+    return () => clearInterval(sliderInterval);
+  }, [logos]);
+
+  return (
+    <div className={styles.brandWrapper}>
+      {logos.map((row, rowIndex) => (
+        <div key={rowIndex} className={styles.brandList}  style={{ transform: `translateX(${positions[rowIndex]}%)` }}>
+          {row.map((logo, index) => (
+            <div key={index} className={styles.brandListItem}  style={{ backgroundImage: `url(${logo})` }}  />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+};
+.brandWrapper {
+  background-color: black;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.brandList {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  align-items: center;
+  justify-content: center;
+  animation: slide infinite linear;
+}
+
+.brandListItem {
+  width: 100px; /* Adjust width as needed */
+  height: 40px; /* Adjust height as needed */
+  margin-right: 20px; /* Adjust margin as needed */
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+  
+  import React from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import styles from '../../styles/Home/Brand.module.css';
+
+// Define your image imports
+import Airtel from '../../images/airtel.png';
+import UBA from '../../images/UBA.png';
+import Paga from '../../images/paga.png';
+import MTN from '../../images/MTN.png';
+import Dangote from '../../images/dangote.png';
+import Firstbank from '../../images/firstbank.png';
+import Cloud from '../../images/cloud.png';
+import Ebay from '../../images/ebay.png';
+import Tux from '../../images/tux.png';
+import Spotify from '../../images/spotify.png';
+import Airbnb from '../../images/airbnb.png';
+import Facebook from '../../images/facebook.png';
+import Cocacola from '../../images/cocacola.png';
+import Zoom from '../../images/zoom.png';
+import Creativecloud from '../../images/creativecloud.png';
+import Netflix from '../../images/netflix.png';
+import Discord from '../../images/discord.png';
+import Figma from '../../images/figma.png';
+import Paypal from '../../images/paypal.png';
+import Adobe from '../../images/adobe.png';
+
+export default function Brand() {
+    const settings = {
+        dots: false,
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        // autoplay: true,
+        autoplaySpeed: 0, 
+        speed: 3000, // Increase speed
+      };
+  const rows = [
+    [Airtel, UBA, Paga, MTN, Dangote, Firstbank, Cloud],
+    [Cloud, Ebay, Tux, Spotify, Airbnb, Facebook, Cocacola],
+    [Zoom, Creativecloud, Netflix, Discord, Figma, Paypal, Adobe],
+  ];
+
+  return (
+    <div className={styles.brandWrapper}>
+      <div className={styles.brandMain}>
+        {rows.map((images, index) => (
+          <Slider {...settings} key={index} className={styles.brandList}>
+            {images.map((image, imgIndex) => (
+              <div className={styles.brandListItem} key={imgIndex}>
+                <img src={image} className={styles.brandListItemImg} alt={`logo-${index}-${imgIndex}`} />
+              </div>
+            ))}
+          </Slider>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+.brandWrapper{
+    background-color: #000;
+    padding: 100px 0px;
+    overflow: hidden;
+}
+.brandMain{
+  display: flex;
+  margin: 0px 110px;
+  flex-direction: column;
+  row-gap: 50px;
+  justify-content: center;
+  align-items: center;
+}
+.brandList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+  
+.brandListItem {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.brandListItemImg { 
+  height: 35px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: auto;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+
+
+import React, { useState, useEffect } from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import styles from '../../styles/Home/Brand.module.css';
+
+// Define your image imports
+import Airtel from '../../images/airtel.png';
+import UBA from '../../images/UBA.png';
+import Paga from '../../images/paga.png';
+import MTN from '../../images/MTN.png';
+import Dangote from '../../images/dangote.png';
+import Firstbank from '../../images/firstbank.png';
+import Cloud from '../../images/cloud.png';
+import Ebay from '../../images/ebay.png';
+import Tux from '../../images/tux.png';
+import Spotify from '../../images/spotify.png';
+import Airbnb from '../../images/airbnb.png';
+import Facebook from '../../images/facebook.png';
+import Cocacola from '../../images/cocacola.png';
+import Zoom from '../../images/zoom.png';
+import Creativecloud from '../../images/creativecloud.png';
+import Netflix from '../../images/netflix.png';
+import Discord from '../../images/discord.png';
+import Figma from '../../images/figma.png';
+import Paypal from '../../images/paypal.png';
+import Adobe from '../../images/adobe.png';
+
+export default function Brand() {
+  const logos = [
+    [Airtel, UBA, Paga, MTN, Dangote, Firstbank],
+    [Cloud, Ebay, Tux, Spotify, Airbnb, Facebook, Cocacola],
+    [Zoom, Creativecloud, Netflix, Discord, Figma, Paypal, Adobe],
+  ];
+
+  return (
+    <div className={styles.brandWrapper}>
+      {logos.map((row, rowIndex) => (
+        <div key={rowIndex} className={styles.brandList}>
+          {row.map((logo, index) => (
+            <div key={index} className={styles.brandListItem}  style={{ backgroundImage: `url(${logo})` }}  />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+.brandWrapper {
+  background-color: black;
+  padding: 100px 0px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  row-gap: 77px;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.brandList {
+  display: flex;
+  flex-direction: row;
+  column-gap: 55px;
+  align-items: center;
+  justify-content: center;
+  animation: slide infinite linear;
+}
+
+.brandListItem {
+  width: 100px; /* Adjust width as needed */
+  height: 40px; /* Adjust height as needed */
+  margin-right: 20px; /* Adjust margin as needed */
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+  
+
+export default function Brand() {
+  const photos = [
+    Airtel, UBA, Paga, MTN, Dangote, Firstbank,
+    Cloud, Ebay, Tux, Spotify, Airbnb, Facebook, Cocacola,
+    Zoom, Creativecloud, Netflix, Discord, Figma, Paypal, Adobe
+  ];
+
+
+  return (
+    <div className={styles.brandWrapper}>
+      <div className={styles.brandMain}>
+      <div className={styles.brandList}>
+        <Marquee className={styles.brandListItem}  
+        velocity={10}
+        radius={50}>
+          {photos.slice(0,7).map((photo, index)=> (
+            <Photo
+            className={styles.brandListItemImg}
+            key={`marquee-row-1-${index}`}
+            src={photo}
+            alt={`Brand ${index}`}
+            />
+          ))}
+        </Marquee>
+      </div>
+      <div className={styles.brandList}>
+        <Marquee className={styles.brandListItem}  
+        velocity={10}
+        radius={50}>
+          {photos.slice(7,14).map((photo, index)=> (
+            <Photo
+            className={styles.brandListItemImg} 
+            key={`marque-row-2-${index}`}
+            src={photo}
+            alt={`Brand ${index}`}
+            />
+          ))}
+        </Marquee>
+      </div>
+      <div className={styles.brandList}>
+          <Marquee className={styles.brandListItem} 
+          velocity={10}
+          radius={50}
+          >
+            {photos.slice(14, 21).map((photo, index)=> (
+            <Photo
+            className={styles.brandListItemImg}
+            key={`marque-row-3-${index}`} 
+            src={photo}
+            alt={`Brand ${index}`}
+            />
+            ))}
+          </Marquee>
+      </div>
+
+      </div>
+    </div>
+  );
+};
+
+.brandWrapper{
+  background-color: black;
+  padding: 100px 100px;
+  height: 100%;
+  width:100%;
+}
+.brandMain{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 50px;
+  height: 100%;
+  width:100%;
+}
+
+.brandList{
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+
+}
+
+.brandListItem{
+  max-height:100%;
+  max-width:100%;  
+  display: flex;
+  flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+  column-gap: 10px;
+}
+.brandListItemImg {
+  height: 35px;
+  width:50px;
+  overflow:hidden;
+  object-fit: contain;
+}
+
+import React from "react";
+import styles from '../../styles/Home/Brand.module.css';
+import  '../../styles/Home/DefaultBrand.css';
+import { motion } from "framer-motion";
+import Marquee from "react-marquee-slider";
+// import styled from "styled-components";
+// import { Marquee } from "@wethegit/react-marquee";
+// import "@wethegit/react-marquee/style.css"
+import Airtel from '../../images/airtel.png';
+import UBA from '../../images/UBA.png';
+import Paga from '../../images/paga.png';
+import MTN from '../../images/MTN.png';
+import Dangote from '../../images/dangote.png';
+import Firstbank from '../../images/firstbank.png';
+import Cloud from '../../images/cloud.png';
+import Ebay from '../../images/ebay.png';
+import Tux from '../../images/tux.png';
+import Spotify from '../../images/spotify.png';
+import Airbnb from '../../images/airbnb.png';
+import Facebook from '../../images/facebook.png';
+import Cocacola from '../../images/cocacola.png';
+import Zoom from '../../images/zoom.png';
+import Creativecloud from '../../images/creativecloud.png';
+import Netflix from '../../images/netflix.png';
+import Discord from '../../images/discord.png';
+import Figma from '../../images/figma.png';
+import Paypal from '../../images/paypal.png';
+import Adobe from '../../images/adobe.png';
+
+
+export default function Brand() {
+  const photos = [
+    Airtel, UBA, Paga, MTN, Dangote, Firstbank,
+    Cloud, Ebay, Tux, Spotify, Airbnb, Facebook, Cocacola,
+    Zoom, Creativecloud, Netflix, Discord, Figma, Paypal, Adobe
+  ];
+
+
+  return (
+    <div className={styles.brandWrapper}>
+      <div className={styles.brandMain}>
+      <div className={styles.brandList}>
+        <Marquee className={styles.brandListItem}  
+        velocity={60}
+        radius={5}>
+          {photos.slice(0,7).map((photo, index)=> (
+            <img
+            className={styles.brandListItemImg}
+            key={`marquee-row-1-${index}`}
+            src={photo}
+            alt={`Brand ${index}`}
+            />
+          ))}
+        </Marquee>
+      </div>
+      <div className={styles.brandList}>
+        <Marquee className={styles.brandListItem}  
+        velocity={60}
+        radius={5}
+        style={{width:"30px"}}>
+          {photos.slice(7,14).map((photo, index)=> (
+            <img
+            className={styles.brandListItemImg} 
+            key={`marque-row-2-${index}`}
+            src={photo}
+            alt={`Brand ${index}`}
+            />
+          ))}
+        </Marquee>
+      </div>
+      <div className={styles.brandList}>
+          <Marquee className={styles.brandListItem} 
+          velocity={60}
+          radius={5}
+          >
+            {photos.slice(14, 21).map((photo, index)=> (
+            <img
+            className={styles.brandListItemImg}
+            key={`marque-row-3-${index}`} 
+            src={photo}
+            alt={`Brand ${index}`}
+            />
+            ))}
+          </Marquee>
+      </div>
+
+      </div>
+    </div>
+  );
+};
+
+.brandWrapper{
+  background-color: black;
+  padding: 100px 100px;
+
+}
+.brandMain{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 50px;
+  height: 100%;
+  width:100%;
+}
+
+.brandList{
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+
+}
+
+.brandListItem{
+  max-height:100%;
+  max-width:100%;  
+  width:50px;
+  display: flex;
+  flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+  column-gap: 10px;
+}
+.brandListItemImg {
+  height: 30px;
+  width:50px;
+  overflow:hidden;
+  object-fit: contain;
+}
+
+.cardContainer {
+  background-color: transparent;
+  width: 200px;
+  height: 250px;
+  overflow-y: hidden;
+  perspective: 1000px; 
+}
+
+.flipCard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  overflow-y: hidden;
+}
+
+.cardContainer:hover .flipCard {
+    transform: rotateY(180deg);
+}
+
+
+.flipCardFront,
+.flipCardBack {  
+    overflow-y: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flipCardFront {
+    background-color: black;
+    color: black;
+}
+
+.svgImg {    
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+}
+
+.svgHeading { 
+    color: white;  
+}
+
+.flipCardBack {
+  background-color: dodgerblue;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.svgPara {
+    color: #FFF;
+    font-family: Arial;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+ 
+}
+
+
+/* .checkCards .cardContainer .flipCard .flipCardBack .cardButton {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    margin: 1vw;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+} */
+
+
+/* .cardContainer .flipCard:hover {
+    transform: rotateY(0.5turn);
+  }
+  .flipCard {
+  
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  }
+  
+  .cardContainer:focus {
+    outline: 0;
+  }
+  
+  .cardContainer:hover .flipCard,
+  .cardContainer:focus .flipCard{
+    transform: rotateY(180deg);
+    
+    transition: all 1s ease-in-out;
+  }
+  
+  .flipCardFront,
+  .flipCardBack {
+    
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  }
+  .flipCardFront { 
+  background: linear-gradient(to left, #4364f7, #6fb1fc);
+  color: black;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flipCardBack {
+    
+  background: linear-gradient(to right, #4364f7, #6fb1fc);
+  color: white;
+  transform: rotateY(180deg);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  h3 {
+    font-size: 20px;
+    font-family: Verdana, sans-serif;
+    font-weight: bold;
+    color: #fff;
+  }
+   */
+
+   
+/* Styling for the cards container */
+.checkCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; 
+}
+
+/* Styling for each card container */
+.cardContainer {
+    width: 200px; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+/* Styling for the flip card */
+.flipCard {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+/* Styling for the flipped state of the flip card */
+.flipCard.flipped {
+    transform: rotateY(180deg);
+}
+
+/* Styling for the front and back faces of the card */
+.flipCardFront,
+.flipCardBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px; /* Adjust as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for the front face of the card */
+.flipCardFront {
+    background-color: #3e3e3e; /* Adjust as needed */
+    color: #FFF;
+    z-index: 2;
+}
+
+/* Styling for the back face of the card */
+.flipCardBack {
+    background-color: #FFF; /* Adjust as needed */
+    color: #3e3e3e;
+    transform: rotateY(180deg);
+}
+
+/* Styling for the image inside the card */
+.cardImg {
+    width: 100px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+    object-fit: cover;
+    border-radius: 50%; /* Adjust as needed */
+    margin-bottom: 10px; /* Adjust as needed */
+}
+
+/* Styling for the heading inside the card */
+.cardHeading {
+    font-size: 18px; /* Adjust as needed */
+    font-weight: bold;
+    margin-bottom: 10px; /* Adjust as needed */
+}
+
+/* Styling for the paragraph text inside the card */
+.cardText {
+    font-size: 14px; /* Adjust as needed */
+    text-align: center;
+    padding: 0 20px; /* Adjust as needed */
+}
+
+import React, {useState } from 'react';
+import img1 from '../images/productImgOne.png';
+import { ReactComponent as TickMark } from '../svgFiles/tickMarkLogo.svg';
+import styles from '../styles/Product.module.css';
+import { useDropzone } from 'react-dropzone';
+
+const items = ["Simplify interview coordination with automated scheduling tools, reducing administrative workload.",
+              " Match candidates to job requirements seamlessly, saving time and  improving hiring accuracy.",
+            "Evaluate candidate skills objectively with AI-powered assessments tailored to your job requirements."]
+
+export default function Product() {
+
+  const [activeTab, setActiveTab] = useState('option1');
+  const [jobDescription, setJobDescription] = useState('');
+  const [resume, setResume] = useState(null);
+
+
+  const handleApply = () => {
+    console.log("job description", jobDescription);
+    console.log("Uploaded resume", resume);
+  }
+
+  const handlePreviewResume = () => {
+    if(resume) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const url = reader.result;
+        window.open(url, '_blank');
+      }
+      reader.readAsDataURL(resume);
+    }
+  };
+
+  const handleClear = () => {
+    setJobDescription('');
+    setResume(null);
+  }
+
+  const handleTellAbtRes = () => {
+    //add the logic(code) here for tell me abt yourself button
+    console.log("Analyzing resume...");
+  }
+
+  const handleImproveSkill = () => {
+    //add the logic(code) here for improve skills button
+    console.log("Imporve your skills.....");
+  }
+
+  const handlePerMatch = () => {
+    //add the logic(code) here for percentage match button
+    console.log("Percentage match....");
+  }
+
+  const onDrop = (acceptedFiles) => {
+    setResume(acceptedFiles[0]);
+  };
+
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop, 
+    accept: 'application/pdf'
+  });
+
+  return (
+    <div className={styles.productWrapper}>
+        <div className={styles.productMain}>    
+            <div className={styles.productLeft}>
+                <div className={styles.leftTabMenu}>
+                    <button onClick={() => setActiveTab('option1')} className={activeTab === 'option1' ? styles.active : ''}>1. Add Resume</button>
+                    <button onClick={() => setActiveTab('option2')} className={activeTab === 'option2' ? styles.active : ''}>2. Save Resume</button>
+                    <button onClick={() => setActiveTab('option3')} className={activeTab === 'option3' ? styles.active : ''}>3. Create Resume</button>
+                </div>
+                <div className={styles.leftTabContent}>
+                    {activeTab === 'option1' && (
+                        <div className={styles.tabOneWrapper}>
+                          <div className={styles.addResumeBlock}>
+                            <div className={styles.addResumeBlockHeading}>Add Your Resume</div>
+                            <div className={styles.addResumeBlockText}>Use our Uploader to save your resume and reach thousands of  
+                            active Employers.</div>
+                          </div>
+
+                          <div className={styles.jobDescribeBlock}>
+                            <label>Job Description</label>
+                            <textarea 
+                            placeholder= "Describe your job desciption as mentioned in the JD section "
+                            value={jobDescription} 
+                            onChange={(e) => setJobDescription(e.target.value)} />
+                          </div>
+
+                          <div className={styles.uploadResumeBlock}>
+                            <label>Upload Resume</label>
+                            <div className={styles.uploadResumeBlockText}>
+                            {/* Drag and drop area */}
+                            <div {...getRootProps()} className={styles.dropzone}>
+                              <p className={styles.uploadResumeBlockInput} >Drag 'n' drop PDF files here, or click to select files</p>
+        
+                              <input {...getInputProps()} />
+                            </div>
+                            {resume && <p>Resume Uploaded : {resume.name} </p>}
+                            </div>
+                          
+                          <div className={styles.uploadResumeBlockButton}>
+                            <button onClick={handleApply}>Apply</button>
+                            <button onClick={handlePreviewResume}>Preview Resume</button>
+                            <button onClick={handleClear}>Clear</button>
+                          </div>
+                          </div>
+
+                          <div className={styles.addResumeButtons}>
+                            <button onClick={handleTellAbtRes}>Tell me about the resume</button>
+                            <button onClick={handleImproveSkill}>How can I improve my skills</button>
+                            <button onClick={handlePerMatch}>Percentage match</button>
+                          </div>
+                        
+                        </div>
+                    )}
+
+                    {activeTab === 'option2' && (
+                        <div className={styles.tabTwoWrapper}>Save Resume</div>
+                    )}
+
+                    {activeTab === 'option3' && (
+                        <div className={styles.tabThreeWrapper}>Create Resume</div>
+                    )}
+                </div>
+            </div>
+            <div className={styles.productRight}>
+              <img src={img1} />
+              <div className={styles.rightHeading}>Unlock the Power of Gen AI for Your Recruitment Needs</div>
+              <div className={styles.rightContent}>
+                {items.map((item) => ( 
+                  <div className={styles.rightContentText} 
+                  key={item.id}>
+                    <TickMark />
+                    <div className={styles.rightContentTextPoints}>{item}</div>  
+                  </div>
+                )
+                )}
+              </div>
+            </div>
+        </div>  
+    </div>
+  )
+};
+
+  
+import React, { useState } from 'react';
+import axios from 'axios'; // For making HTTP requests, install axios if not already installed
+import { getDocument } from 'pdfjs-dist';
+
+const Product = () => {
+    const [jobDescription, setJobDescription] = useState('');
+    const [resumeFile, setResumeFile] = useState(null);
+    const [question, setQuestion] = useState('');
+    const [answer, setAnswer] = useState('');
+
+    const handleJobDescriptionChange = (event) => {
+        setJobDescription(event.target.value);
+    };
+
+    const extractTextFromPDF = async (pdfData) => {
+        const pdf = await getDocument({ data: pdfData }).promise;
+        let resumeText = '';
+        for (let i = 1; i <= pdf.numPages; i++) {
+            const page = await pdf.getPage(i);
+            const textContent = await page.getTextContent();
+            const pageText = textContent.items.map((item) => item.str).join(' ');
+            resumeText += pageText;
+        }
+        return resumeText;
+    };
+
+    const handleResumeFileChange = async (event) => {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      
+      reader.onload = async (e) => {
+          const pdfData = new Uint8Array(e.target.result);
+          try {
+              const resumeText = await extractTextFromPDF(pdfData);
+              setResumeFile(resumeText);
+          } catch (error) {
+              console.error('Error extracting text from PDF:', error);
+              // Handle the error, such as displaying an error message to the user
+          }
+      };
+      
+      reader.readAsArrayBuffer(file);
+  };
+  
+
+    const handleQuestionClick = async (question) => {
+        setQuestion(question);
+
+        // Send HTTP request to backend API
+        try {
+            const response = await axios.post('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyCHSTf7LG8sEcFYeN82dyPTyXVRyG1FGfI', {
+                jobDescription: jobDescription,
+                resumeText: resumeFile,
+                question: question
+            });
+            setAnswer(response["data"]["candidates"][0]["content"]["parts"][0]["text"]);
+        } catch (error) {
+            console.error('Error:', error);
+            setAnswer('Error occurred. Please try again later.');
+        }
+    };
+
+    return (
+        <div style={{backgroundColor:'black'}}>
+            <div>
+                <label>Job Description:</label>
+                <textarea style={{color:'black'}} value={jobDescription} onChange={handleJobDescriptionChange} />
+            </div>
+            <div>
+                <label>Upload Resume:</label>
+                <input type="file" accept=".pdf" onChange={handleResumeFileChange} />
+            </div>
+            <div>
+                <button onClick={() => handleQuestionClick('tell me about the uploaded resume how well its matching with the job description')}>
+                    Tell me about the resume
+                </button>
+                <button onClick={() => handleQuestionClick('Tell me the missing skills which needed to be added in my resume to match the job description')}>
+                   missing skills
+                </button>
+                <button onClick={() => handleQuestionClick('how well the resume matching with jd give in percentage')}>
+                    Percentage
+                </button>
+            </div>
+            {answer && (
+                <div>
+                    <label>{question}</label>
+                    <p>{answer}</p>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default Product;

@@ -1,0 +1,91 @@
+.navWrapper {
+    background: #000;
+    padding: 1rem 0rem; 
+  } 
+  .menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+  .heading {
+    text-align: center;   
+    font-family: "Abhaya Libre";
+    font-size: 35px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+    background: rgba(57, 74, 241, 1);
+    background: linear-gradient(
+    45deg,
+    rgb(226, 127, 253) 0%,
+    rgba(126, 45, 244, 1) 21%,
+    rgba(57, 74, 241, 1) 28%,
+    rgba(75, 216, 237, 1) 35%,
+     rgba(57, 74, 241, 1) 63%,
+    rgba(126, 45, 244, 1) 70%,
+    rgba(162, 84, 247, 1) 77%,
+    rgb(219, 127, 253) 97%,
+    rgb(204, 0, 255) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 50%;
+  animation: color 10s linear infinite; 
+    }
+
+    @keyframes color {
+      from {
+        background-position: 0% 50%;
+      }
+      to {
+        background-position: 100% 50%;
+      }
+    }
+  
+  .menuList {
+    display: flex;
+    flex-direction: row;
+    column-gap: 5rem;
+    /* align-items: center; */
+  }
+
+  .menuItemList {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap:5rem;
+  }
+  .menuItemListIcon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap:3rem;
+  }
+  
+  li {
+    list-style: none; 
+  }
+ 
+  .linkStyle {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #F8F7F7;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    /* transition: color 0.3s ease;  */
+    /* Smooth color transition */
+  }
+  /* .linkStyle:hover {
+    color: #c73817; a
+  } */

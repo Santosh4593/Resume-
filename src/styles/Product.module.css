@@ -1,0 +1,205 @@
+.productWrapper{
+    background: #000000;
+    align-items: center;
+    justify-content: center;
+}
+
+.productMain {
+    padding:100px 200px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 90px;
+}
+
+.productLeft {
+    display: flex;
+    flex-direction: column;
+    row-gap: 31px;
+    width: 100%;
+}
+
+.leftTabMenu{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    column-gap:20px;
+}
+.leftTabMenu button{  
+    color: #2678B8;
+    background-color: #F7F7F7;
+    font-size: 16px; 
+    border: none;
+    font-weight: 500;
+}
+
+.leftTabContent{
+}
+
+.tabOneWrapper{
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+}
+
+.addResumeBlock{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.addResumeBlockHeading{
+    color: #000;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.addResumeBlockText{
+    color: #8E8E8E;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.jobDescribeBlock{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+label{
+    color: #000;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+textarea{
+    border-radius: 6px;
+    border: 1px solid #000;
+    background: #EBEBEB;
+    resize: vertical;
+    font-size: 16px;
+    padding:5px 10px;
+}
+::placeholder {
+    color: #8E8E8E;
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  }
+
+.uploadResumeBlock{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.uploadResumeBlockText{ 
+    border-radius: 6px;
+    border: 1px solid #000;
+    background: #EBEBEB;
+    resize: vertical;
+    color: #8E8E8E;
+    font-size: 16px;
+    padding:5px 10px;
+
+}
+
+.dropZone{
+
+}
+
+.uploadResumeBlockInput{
+}
+
+input{
+
+}
+
+p{
+ padding: 5px 0px;
+}
+
+.uploadResumeBlockButton{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.uploadResumeBlockButton button {
+    text-decoration: none;
+    cursor:pointer;
+    border-radius: 6px;
+    background: #D9D9D9;   
+    padding: 10px 0px;
+    width:140px; 
+    color:#4b4b4b;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+}
+
+.addResumeButtons{ 
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    row-gap:20px;
+}
+
+.addResumeButtons button {
+    color: #2678B8;
+    border-radius: 3px;
+    border: 1px solid #2678B8;
+    cursor:pointer;
+    background: #FFF;
+    font-size: 16px;
+    padding: 10px 20px;
+    width:fit-content;
+    font-weight: 500;
+}
+
+.tabTwoWrapper{
+    
+
+}
+.tabThreeWrapper {
+
+}
+
+.productRight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 25px;
+    width: 100%;
+}
+
+img{
+    width: 300px;
+}
+
+.rightHeading{
+    color: #000B30;
+    font-size: 24px;
+    font-weight: 500;
+    width:500px;
+}
+
+.rightContent {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.rightContentText {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+    width: 500px;
+}
+
+.rightContentTextPoints{
+    color: #3B3B3B;
+    text-align: justify;
+    font-size: 14px;
+    font-weight: 400;
+}

@@ -1,0 +1,86 @@
+.contactWrapper{
+    background-color: black;
+    padding: 50px 100px 100px;
+}
+
+.contactMain {
+    display: flex;
+    padding: 0px 50px 0px 30px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 60px;
+    border-radius: 20px;
+    background: var(--DOML-gradient-1, linear-gradient(267deg, #00F0FF 4.01%, #5200FF 57.55%, #FF2DF7 114.97%));
+}
+
+.contactImgSection {
+    
+}
+
+.contactImg {
+
+}
+
+.contactFormSection {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+
+.formHeading {
+    color: #FFF;
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.successMessage {
+    color: #FFF;    
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.contactForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 30px;
+}
+
+input {
+    border-radius: 23.298px;
+    border: 0.777px solid var(--DOML-gradient-1, #00F0FF);
+    background: rgba(255, 255, 255, 0.20);
+    backdrop-filter: blur(20px); 
+    width: 340px;
+    height: 20px;
+    padding: 10px 34px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+input::placeholder {
+    color:#FFF;
+}
+
+input:focus {
+    outline: none;
+}
+
+button {
+    border-radius: 50px;
+    border: 1px solid var(--DOML-gradient-1, #00F0FF);
+    background: #000;
+    font-size: 15px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 40px;
+}

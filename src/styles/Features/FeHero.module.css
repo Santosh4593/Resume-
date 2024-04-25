@@ -1,0 +1,87 @@
+.feHeroWrapper {
+    background-color: black;
+}
+
+.feHeroMain {
+    padding: 50px 100px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 150px;
+    align-items: center;
+    justify-content: center ;
+}
+
+.feHeroText {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.feHeroHeading {
+    color: #FFF;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    background: linear-gradient(267deg, #00F0FF 4.01%, #5200FF 57.55%, #FF2DF7 114.97%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 50px;
+    color: transparent;
+    background: rgba(57, 74, 241, 1);
+  background: linear-gradient(
+    45deg,
+    rgb(226, 127, 253) 0%,
+    rgba(126, 45, 244, 1) 21%,
+    rgba(57, 74, 241, 1) 28%,
+    rgba(75, 216, 237, 1) 35%,
+     rgba(57, 74, 241, 1) 63%,
+    rgba(126, 45, 244, 1) 70%,
+    rgba(162, 84, 247, 1) 77%,
+    rgb(219, 127, 253) 97%,
+    rgb(204, 0, 255) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 50%;
+  animation: color 5s linear infinite; 
+}
+
+@keyframes color {
+    from {
+      background-position: 0% 50%;
+    }
+    to {
+      background-position: 100% 50%;
+    }
+  }
+
+
+.feHeroSubHeading {
+    color: #FFF;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+
+.feHeroLink {
+   text-decoration: none;
+    display: flex;
+    padding: 16px 32px;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background: #08358E;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.feHeroImgBox {
+}
+.feHeroImg {
+    width: 400px;
+    height:570px;
+}

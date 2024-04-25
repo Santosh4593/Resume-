@@ -1,0 +1,129 @@
+/* Home Wrapper */
+.homeWrapper {
+    background: #F7F7F7;
+    }
+  
+  /* Home Main */
+  .homeMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 200px;
+  }
+  
+   /* Home Row One */
+  .homeRowOne {
+    display: flex;
+    flex-direction: row;
+    column-gap:100px;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  
+  /* Home Row One Left */
+  .homeRowOneLeft {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    width:100%;
+  }
+  
+  .homeRowOneLeftHeading {
+    color: #07001C;
+    font-size: 40px;
+    font-weight: 500;
+    width: 80%;
+  }
+  
+  .homeRowOneLeftContent {
+    color: #444;
+    font-size: 15px;
+    font-weight: 400;
+    width:100%;
+  }
+  
+  .homeRowOneLeftButton {
+    color: #F7F7F7;
+    font-size: 24px;
+    width: 42%;
+    border-radius: 35px;
+    background: #3658C1;
+    display: inline-flex;
+    text-align: center;
+    padding: 15px 60px;
+    text-decoration: none;
+    align-items: center;
+    font-weight: 600;
+    font-variant: all-small-caps;
+  }
+  
+  /* Home Row One Right */
+  .homeRowOneRight {
+    display: flex;
+    width:70%;
+    justify-content: flex-end;
+  }
+  .homeRowOneRight img {
+    width:500px;
+    height:auto;
+    align-self: flex-end;
+} 
+  
+  /* Home Row Two */
+  .homeRowTwo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap:100px;
+    margin-bottom: 50px;
+  }
+  
+  /* Home Row Two Left */
+  .homeRowTwoLeft {
+    width: 70%;
+  }
+ 
+  .homeRowTwoLeft img {
+    width:500px;
+  }
+  
+  /* Home Row Two Right */
+  .homeRowTwoRight {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    width:100%;
+  }
+  
+  .homeRowTwoRightContent {
+    color: #000;
+    font-size: 16px;
+    font-weight: 400; 
+    /* width:80%; */
+  }
+  
+  .homeRowTwoRightContent ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+  }
+  
+  .homeRowTwoRightContent ul li {
+    margin-bottom: 10px;
+  }
+  
+  .homeRowTwoRightButton {
+    color: #F7F7F7;
+    font-size: 24px;
+    border-radius: 35px;
+    width: 42%;
+    display: flex;
+    background: #3658C1;
+    display: inline-flex;
+    padding: 15px 60px;
+    text-decoration: none;
+    align-items: center;
+    font-weight: 600;
+    font-variant: all-small-caps;
+  }
+  
